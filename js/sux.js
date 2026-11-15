@@ -9,42 +9,34 @@ var rule = {
     multi: 1,
     url: 'fyclass',
     filter_url: '',
-
-     // 解析接口配置
-    parse_url: [        
-            "",
-      
+    // 解析接口配置，在这里填入你的解密解析接口，示例：["https://xxx/jx?url="]
+    parse_url: [
     ],
-
     // 屏蔽地址
     blocked_urls: [
         'http://lie.yuyun4kmaopan.qijiyun.vip/d/ty/923241268797768768/video_260803_125610.mp4',
         'http://mlwl.7766.org:91/qf.mp4',
         'https://hwmov.a.yximgs.com/upic/2026/05/20/12/BMjAyNjA1MjAxMjIyNThfMTY1NTYxNDk0NF8xOTY0Mjg2MzEzNzNfMl8z_b_B2d85e883e7ab00ad52949e6bcad9fa59.mp4',
         'https://txmov2.a.kwimgs.com/upic/2026/04/24/22/BMjAyNjA0MjQyMjMxMTdfNTE1Njg1NzUyXzE5NDAxNDg2MjI0N18yXzM=_b_Be9cdf9b3f66017f25b1e9f7c1135de53.mp4',
-       'https://gitee.com/nm_nm/interface/raw/master/ips/ips(20250418105556)_001.ts',
+        'https://gitee.com/nm_nm/interface/raw/master/ips/ips(20250418105556)_001.ts',
         'IP使用次数超限，请加群签到.mp4'
     ],
-
     headers: {
         'User-Agent': 'PC_UA'
     },
     timeout: 5000,
     cate_exclude: '会员|游戏|全部',
-    class_name: '\u51b3\u5929\u5f71\u52a8\u6f2b\u0026\u7535\u5f71\u0026\u51b3\u5929\u5f71\u7535\u89c6\u5267\u0026\u51b3\u5929\u5f71\u77ed\u5267\u0026\u51b3\u5929\u5f71\u7efc\u827a\u0026\u51b3\u5929\u5f71\u5c11\u513f\u0026\u51b3\u5929\u5f71\u7eaa\u5f55\u7247',
-    class_url: '\u0063\u0061\u0072\u0074\u006f\u006f\u006e\u0026\u006d\u006f\u0076\u0069\u0065\u0026\u0074\u0076\u0026\u006d\u0069\u006e\u0069\u005f\u0073\u0065\u0072\u0069\u0065\u0073\u0026\u0076\u0061\u0072\u0069\u0065\u0074\u0079\u0026\u0063\u0068\u0069\u006c\u0064\u0026\u0064\u006f\u0063\u006f',
+    class_name: '太阳BOX4K电影&太阳BOX4K电视剧&短剧&太阳BOX4K综艺&太阳BOX4K少儿&太阳BOX4K纪录片&太阳BOX4K动漫',
+    class_url: 'cartoon&movie&tv&mini_series&variety&child&doco',
     limit: 20,
     play_parse: true,
-
     lazy: $js.toString(() => {
         let apiUrls = rule.parse_url;
         let success = false;
-
         function isBlockedUrl(url) {
             if (!url) return true;
             return rule.blocked_urls.some(blocked => url.includes(blocked));
         }
-
         for (let i = 0; i < apiUrls.length; i++) {
             try {
                 let apiUrl = apiUrls[i] + encodeURIComponent(input);
@@ -61,7 +53,6 @@ var rule = {
                     throw new Error("未找到可解码的数据字段");
                 }
                 log("提取的 Base64 数据: " + base64Data);
-
                 let decodedStr;
                 if (typeof CryptoJS !== 'undefined' && CryptoJS.enc && CryptoJS.enc.Base64) {
                     let wordArray = CryptoJS.enc.Base64.parse(base64Data);
@@ -74,7 +65,6 @@ var rule = {
                     decodedStr = atob(base64Data);
                 }
                 log("第一次 Base64 解码后: " + decodedStr);
-
                 const prefixes = ["https://ldmax.cooom/", "http://ldmax.cooom/", "ldmax.cooom/"];
                 let cleaned = decodedStr;
                 for (let p of prefixes) {
@@ -84,7 +74,6 @@ var rule = {
                     }
                 }
                 log("去除前缀后: " + cleaned);
-
                 if (cleaned.length < 16) {
                     throw new Error("数据过短，无法提取 key");
                 }
@@ -92,7 +81,6 @@ var rule = {
                 let cipherTextBase64 = cleaned.substring(16);
                 let keyIv = seed.split('').reverse().join('');
                 log("seed: " + seed + ", keyIv: " + keyIv);
-
                 let ciphertextWordArray;
                 if (typeof CryptoJS !== 'undefined' && CryptoJS.enc && CryptoJS.enc.Base64) {
                     ciphertextWordArray = CryptoJS.enc.Base64.parse(cipherTextBase64);
@@ -101,7 +89,6 @@ var rule = {
                     ciphertextWordArray = CryptoJS.enc.Latin1.parse(binaryStr);
                 }
                 log("密文 Base64 解码完成，长度: " + (ciphertextWordArray.sigBytes || 0));
-
                 if (typeof CryptoJS === 'undefined') {
                     throw new Error("CryptoJS 未定义，请检查运行环境");
                 }
@@ -117,7 +104,6 @@ var rule = {
                     playUrl = decrypted.toString(CryptoJS.enc.Latin1);
                 }
                 log("解密后的播放地址: " + playUrl);
-
                 if (playUrl && playUrl.startsWith('http')) {
                     if(isBlockedUrl(playUrl)){
                         log("解密得到屏蔽地址，跳过该解析");
@@ -127,8 +113,7 @@ var rule = {
                         header: { 'User-Agent': '' },
                         parse: 0,
                         url: playUrl,
-                        jx: 0,
-                        danmaku: 'http://127.0.0.1:9978/proxy?do=danmu&site=js&url=' + input.split("?")[0]
+                        jx: 0
                     };
                     success = true;
                     break;
@@ -139,12 +124,10 @@ var rule = {
                 log("当前接口解析异常: " + e.message);
             }
         }
-
         if (!success) {
             log("AES解析失败，进入普通解析链");
             let parseIndex = 1;
             let targetUrl = input.split("?")[0];
-
             function tryParse(url, index) {
                 if (index >= rule.parse_url.length) {
                     log('所有解析接口都尝试失败，使用默认解析');
@@ -152,8 +135,7 @@ var rule = {
                         header: { 'User-Agent': "" },
                         parse: 0,
                         url: targetUrl,
-                        jx: 1,
-                        danmaku: 'http://127.0.0.1:9978/proxy?do=danmu&site=js&url=' + input.split("?")[0]
+                        jx: 1
                     };
                     return;
                 }
@@ -180,8 +162,7 @@ var rule = {
                             header: { 'User-Agent': "" },
                             parse: 0,
                             url: data.url,
-                            jx: 0,
-                            danmaku: 'http://127.0.0.1:9978/proxy?do=danmu&site=js&url=' + input.split("?")[0]
+                            jx: 0
                         };
                     } else {
                         log('解析接口 ' + (index + 1) + ' 返回数据无效，尝试下一个');
@@ -195,14 +176,12 @@ var rule = {
             tryParse(targetUrl, parseIndex);
         }
     }),
-
     // 一级：使用第一个文件的新版 API（去掉了推荐分类，加上短剧 channelId）
     一级: $js.toString(() => {
         let d = [];
         let fyclass = MY_CATE;
         let fypage = MY_PAGE;
         let fl = MY_FL;
-
         let channelIds = {
             'tv': '100113',
             'movie': '100173',
@@ -213,11 +192,9 @@ var rule = {
             'mini_series': '120188'
         };
         let channelId = channelIds[fyclass] || '100113';
-
         // 构建 filter_params（filter 的 key 即接口参数名，直接拼接）
         let filterParts = [];
         filterParts.push('sort=' + (fl.sort || '75'));
-
         for (let key in fl) {
             if (key === 'sort') continue;
             let val = fl[key];
@@ -226,7 +203,6 @@ var rule = {
             }
         }
         let filterParams = filterParts.join('&');
-
         let apiUrl = 'https://pbaccess.video.qq.com/trpc.multi_vector_layout.mvl_controller.MVLPageHTTPService/getMVLPage?&vversion_platform=2';
         let commonHeaders = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -234,7 +210,6 @@ var rule = {
             'Origin': 'https://v.qq.com',
             'Referer': 'https://v.qq.com/'
         };
-
         function doRequest(body) {
             return request(apiUrl, { body: JSON.stringify(body), headers: commonHeaders, method: 'POST' });
         }
@@ -243,7 +218,6 @@ var rule = {
             if (ctx) b.page_context = ctx;
             return b;
         }
-
         // 分页：page_context 串行
         let pageContext = null;
         let cacheKey = 'mvl_' + fyclass + '_' + filterParams;
@@ -270,7 +244,6 @@ var rule = {
                 } catch (e) { break; }
             }
         }
-
         try {
             let html = doRequest(makeBody(filterParams, pageContext));
             let json = JSON.parse(html);
@@ -300,8 +273,7 @@ var rule = {
         }
         setResult(d);
     }),
-
-    // 二级：完全保留第二个文件原有（含线路命名与花絮分组）
+    // 二级：完全保留原有（含线路命名与花絮分组）
     二级: $js.toString(() => {
         VOD = {};
         let d = [];
@@ -312,7 +284,6 @@ var rule = {
         let sourceId = /get_playsource/.test(input) ? input.match(/id=(\d*?)&/)[1] : input.split("cid=")[1];
         let cid = sourceId;
         let detailUrl = "https://v.qq.com/detail/m/" + cid + ".html";
-
         try {
             let json = JSON.parse(html);
             VOD = {
@@ -328,7 +299,6 @@ var rule = {
         } catch (e) {
             log("解析详情失败: " + e.message);
         }
-
         if (/get_playsource/.test(input)) {
             eval(html);
             let indexList = QZOutputJson.PlaylistItem.indexList;
@@ -350,7 +320,6 @@ var rule = {
             let json = JSON.parse(html);
             video_lists = json.c.video_ids;
             let url = "https://v.qq.com/x/cover/" + sourceId + ".html";
-
             if (video_lists.length === 1) {
                 let vid = video_lists[0];
                 let o_url = "https://union.video.qq.com/fcgi-bin/data?otype=json&tid=1804&appid=20001238&appkey=6c03bbe9658448a4&union_platform=1&idlist=" + vid;
@@ -392,10 +361,8 @@ var rule = {
                 })
             }
         }
-
         let playFrom = [];
         let playUrl = [];
-
         let ygKeywords = ["预告", "花絮", "片花", "特辑", "幕后", "采访", "制作", "MV", "主题曲"];
         let yg = d.filter(function(it) {
             return it.type && ygKeywords.some(keyword => it.type.includes(keyword));
@@ -403,17 +370,14 @@ var rule = {
         let zp = d.filter(function(it) {
             return !(it.type && ygKeywords.some(keyword => it.type.includes(keyword)));
         });
-
         if (zp.length > 0) {
- playFrom.push("\u7edd\u5929\u5f71");
+            playFrom.push("太阳BOX4K☀");
             playUrl.push(zp.map(it => it.title + "$" + it.url).join("#"));
         }
-
         if (yg.length > 0) {
             let 预告 = yg.filter(it => it.type && it.type.includes("预告"));
             let 花絮片花 = yg.filter(it => it.type && (it.type.includes("花絮") || it.type.includes("片花")));
             let 特辑 = yg.filter(it => it.type && (it.type.includes("特辑") || it.type.includes("幕后")));
-
             if (预告.length > 0) {
                 playFrom.push("预告");
                 playUrl.push(预告.map(it => it.title + "$" + it.url).join("#"));
@@ -427,17 +391,14 @@ var rule = {
                 playUrl.push(特辑.map(it => it.title + "$" + it.url).join("#"));
             }
         }
-
         VOD.vod_play_from = playFrom.join("$$$");
         VOD.vod_play_url = playUrl.join("$$$");
     }),
-
-    // 搜索：完全保留第二个文件原有
+    // 搜索：完全保留原有
     搜索: $js.toString(() => {
         let d = [],
             keyword = input.split("/")[3];
         let seenIds = new Set();
-
         function vodSearch(keyword, page = 0) {
             return request('https://pbaccess.video.qq.com/trpc.videosearch.mobile_search.MultiTerminalSearch/MbSearch?vplatform=2', {
                 body: JSON.stringify({
@@ -465,7 +426,7 @@ var rule = {
                     }
                 }),
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.139 Safari/537.36',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                     'Content-Type': 'application/json',
                     'Origin': 'https://v.qq.com',
                     'Referer': 'https://v.qq.com/'
@@ -473,36 +434,29 @@ var rule = {
                 method: 'POST'
             });
         }
-
         const nonMainContentKeywords = [
             '：', '#', '特辑', '剪辑', '片花', '独家', '专访', '纯享',
             '制作', '幕后', '宣传', 'MV', '主题曲', '插曲', '彩蛋',
             '精彩', '集锦', '盘点', '回顾', '解说', '评测', '反应', 'reaction'
         ];
-
         function isMainContent(title) {
             if (!title) return false;
             if (title.includes('<em>') || title.includes('</em>')) return false;
             return !nonMainContentKeywords.some(keyword => title.includes(keyword));
         }
-
         function isQQPlatform(playSites) {
             if (!playSites || !Array.isArray(playSites)) return true;
             return playSites.some(site => site.enName && site.enName.toLowerCase() === 'qq');
         }
-
         try {
             let html = vodSearch(keyword, 0);
             let json = JSON.parse(html);
-
             function processItemList(itemList) {
                 if (!itemList) return;
-
                 itemList.forEach(it => {
                     if (it.doc && it.doc.id && it.videoInfo &&
                         isMainContent(it.videoInfo.title) &&
                         isQQPlatform(it.videoInfo.playSites)) {
-
                         const itemId = it.doc.id;
                         if (!seenIds.has(itemId)) {
                             seenIds.add(itemId);
@@ -516,24 +470,19 @@ var rule = {
                     }
                 });
             }
-
             if (json.data && json.data.normalList) {
                 processItemList(json.data.normalList.itemList);
             }
-
             if (json.data && json.data.areaBoxList) {
                 json.data.areaBoxList.forEach(box => {
                     processItemList(box.itemList);
                 });
             }
-
         } catch (e) {
             log("搜索出错: " + e.message);
         }
-
         setResult(d);
     }),
-
     filter: {
         "tv": [{
             "key": "sort",
@@ -650,7 +599,7 @@ var rule = {
         }, {
             "key": "iyear",
             "name": "年龄",
-            "value": [{"n": "全部", "v": "-1"}, {"n": "0-3岁", "v": "1"}, {"n": "4-6岁", "v": "2"}, {"n": "7-9岁", "v": "3"}, {"n": "10岁以上", "v": "4"}, {"n": "全年龄", "v": "7"}]
+            "value": [{"n": "全部", "v": "-1"}, {"n": "0‑3岁", "v": "1"}, {"n": "4‑6岁", "v": "2"}, {"n": "7‑9岁", "v": "3"}, {"n": "10岁以上", "v": "4"}, {"n": "全年龄", "v": "7"}]
         }, {
             "key": "ipay",
             "name": "资费",
@@ -687,7 +636,7 @@ var rule = {
         }, {
             "key": "iyear",
             "name": "年份",
-            "value": [{"n": "全部", "v": "-1"}, {"n": "2026", "v": "2026"}, {"n": "2025", "v": "2025"}, {"n": "2024", "v": "1"}, {"n": "2023", "v": "2"}, {"n": "2022", "v": "3"}, {"n": "2021", "v": "4"}, {"n": "2020", "v": "5"}, {"n": "2019-2015", "v": "6"}, {"n": "更早", "v": "9"}]
+            "value": [{"n": "全部", "v": "-1"}, {"n": "2026", "v": "2026"}, {"n": "2025", "v": "2025"}, {"n": "2024", "v": "1"}, {"n": "2023", "v": "2"}, {"n": "2022", "v": "3"}, {"n": "2021", "v": "4"}, {"n": "2020", "v": "5"}, {"n": "2019‑2015", "v": "6"}, {"n": "更早", "v": "9"}]
         }],
         "mini_series": [{
             "key": "sort",
@@ -710,5 +659,5 @@ var rule = {
             "name": "主要看点",
             "value": [{"n": "全部", "v": "-1"}, {"n": "穿越", "v": "3"}, {"n": "重生", "v": "4"}, {"n": "逆袭", "v": "5"}, {"n": "家庭伦理", "v": "6"}, {"n": "虐心", "v": "7"}, {"n": "曲折爱情", "v": "8"}, {"n": "破镜重圆", "v": "9"}, {"n": "马甲", "v": "10"}, {"n": "异能", "v": "11"}, {"n": "甜宠爱情", "v": "12"}, {"n": "奇幻爱情", "v": "13"}, {"n": "闪婚", "v": "15"}, {"n": "系统流", "v": "16"}, {"n": "传承觉醒", "v": "19"}, {"n": "亲情", "v": "20"}, {"n": "宅门风云", "v": "21"}, {"n": "家族恩怨", "v": "22"}, {"n": "身份之谜", "v": "23"}, {"n": "追妻", "v": "25"}, {"n": "虐渣复仇", "v": "29"}, {"n": "权力争夺", "v": "47"}, {"n": "恐怖", "v": "49"}, {"n": "娱乐圈", "v": "88"}, {"n": "脑洞", "v": "89"}]
         }]
-    },
+    }
 };
