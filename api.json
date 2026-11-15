@@ -55,32 +55,32 @@
       "name": "腾翼｜4k",
       "type": 3,
       "jar": "./lib/jp.png",
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/sux.js"
+      "api": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/drpy2.min.js",
+      "ext": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/sux.js"
     },
     {
       "key": "果果",
       "name": "果果｜4k",
       "type": 3,
       "jar": "./lib/jp.png",
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/mg.js"
+      "api": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/drpy2.min.js",
+      "ext": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/mg.js"
     },
     {
       "key": "奇奇",
       "name": "奇艺｜蓝光",
       "type": 3,
       "jar": "./lib/jp.png",
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/奇奇.js"
+      "api": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/drpy2.min.js",
+      "ext": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/%E5%A5%87%E5%A5%87.js"
     },
     {
       "key": "酷酷",
       "name": "优酷｜蓝光",
       "type": 3,
       "jar": "./lib/jp.png",
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/酷酷.js"
+      "api": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/drpy2.min.js",
+      "ext": "https://v4.gh-proxy.org/https://raw.githubusercontent.com/baipiaoduizhang/baipiaozhe/refs/heads/main/js/%E9%85%B7%E9%85%B7.js"
     },
     {
       "key": "[4K]移动4k (1)",
