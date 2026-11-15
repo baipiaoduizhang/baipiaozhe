@@ -50,38 +50,46 @@
         "url": "http://v.rbotv.cn"
       }
     },
-   {      
-      "key": "腾",
-      "name": "腾腾4K",
+   {
+      "key": "mgtv",
+      "name": "果果｜4K",
+      "playerType": 2,
       "type": 3,
-      "api": "./js/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "order_num": 0,
-      "changeable": 0,
-      "ext": "./js/sux.js"
-         },
-    {
-      "key": "果果",
-      "name": "果果｜4k",
-      "type": 3,
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/mg.js"
+    "api": "https://aaa.69mini.com/store/drpy_libs/drpy2.min.js",
+    "ext": "https://app.69mini.com/js/8js/芒果.js"
     },
-     {
-      "key": "QIQI",
+   {
+      "key": "qq",
+      "name": "腾腾｜4K",
+      "playerType": 2,
+      "type": 3,
+    "api": "https://aaa.69mini.com/store/drpy_libs/drpy2.min.js",
+    "ext": "https://app.69mini.com/js/8js/腾讯.js"
+    },
+      {
+      "key": "271",
       "name": "奇艺｜蓝光",
+      "playerType": "1",
       "type": 3,
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/奇奇.js"
+    "api": "https://aaa.69mini.com/store/drpy_libs/drpy2.min.js",
+    "ext": "https://app.69mini.com/js/271.js"
     },
-     {
-      "key": "youku",
+
+    {
+      "key": "yk",
       "name": "优酷｜蓝光",
+      "playerType": "1",
       "type": 3,
-      "api": "./js/drpy2.min.js",
-      "ext": "./js/酷酷.js"
+      "api": "https://aaa.69mini.com/store/drpy_libs/drpy2.min.js",
+      "ext": "https://app.69mini.com/js/youku.js"
+    },
+   {
+      "key": "bilibili",
+      "name": "哔哩4K",
+      "playerType": 2,
+      "type": 3,
+    "api": "https://aaa.69mini.com/store/drpy_libs/drpy2.min.js",
+    "ext": "https://app.69mini.com/js/8js/哔哩.js"
     },
     {
       "key": "[4K]移动4k (1)",
