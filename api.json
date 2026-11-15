@@ -1530,42 +1530,16 @@
     }
   ],
   "lives": [
-   {
+  {
       "name": "直播",
-      "type": 0,
-      "url": "https://11344.kstore.vip/%E6%BA%90%E6%BA%90.txt",
-      "url": "https://g.blfrp.cn/https://raw.githubusercontent.com/cyh92/live/refs/heads/main/source/migu.m3u",
-      "epg": "https://diyp32.112114.xyz/?ch={name}&date={date}",
-      "logo": "https://diyp32.112114.xyz/logo/{name}.png"
+      "type": 1,
+      "url": "https://11344.kstore.vip/%E6%BA%90%E6%BA%90.txt"
     },
-     {
+  {
       "name": "猫TV看体育",
-      "type": 0,
-      "url": "http://rihou.cc:555/gggg.nzk",
-      "epg": "https://diyp32.112114.xyz/?ch={name}&date={date}",
-      "logo": "https://diyp32.112114.xyz/logo/{name}.png"
-     },  
-	  {
-		    "name": "悠伊IPv4",
-		    "type": 0,
-		    "url": "https://ghproxy.cn/https://raw.githubusercontent.com/jisoypub/iptv/refs/heads/main/ipv6.m3u",
-		     "epg": "https://diyp32.112114.xyz/?ch={name}&date={date}",
-                    "logo": "https://diyp32.112114.xyz/logo/{name}.png"
-	    },
-	    {
-		    "name": "饭饭直播",
-		    "type": 0,
-		    "url": "https://gh-proxy.com/https://raw.githubusercontent.com/yuanzl77/IPTV/main/live.txt",
-		     "epg": "https://diyp32.112114.xyz/?ch={name}&date={date}",
-                    "logo": "https://diyp32.112114.xyz/logo/{name}.png"
-	    },
-	    {
-		    "name": "青鱼直播",
-		    "type": 0,
-		    "url": "https://gitee.com/two2024/tv/raw/main/itvlist.m3u",
-		     "epg": "https://diyp32.112114.xyz/?ch={name}&date={date}",
-                    "logo": "https://diyp32.112114.xyz/logo/{name}.png"
-	    },
+      "type": 1,
+      "url": "https://11344.kstore.vip/%E6%BA%90%E6%BA%90.txt"
+    },
     {
       "name": "直播",
       "type": 1,
