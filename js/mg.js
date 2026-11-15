@@ -20,7 +20,7 @@ var rule = {
         'User-Agent': 'PC_UA'
     },
     timeout: 5000,
-    class_name: '4k决天影4k高码率🌶️🐔国产剧&4k决天影4k高码率🌶️🐔新电影&4k决天影4k高码率🌶️🐔国产综艺&4k决天影4k高码率🌶️🐔国产动漫&4k决天影4k高码率🌶️🐔国产纪录片&4k决天影4k高码率🌶️🐔国产教育&4k国产少儿',
+    class_name: '太阳4K电视剧&4k太阳4K新电影&4k太阳4K国产综艺&4k太阳4K国产动漫&4k太阳4K国产纪录片&太阳4K国产教育&太阳4K国产少儿',
     class_url: '2&3&1&50&51&115&10',
     filter: {
         "1": [{
@@ -833,7 +833,7 @@ var rule = {
         } else {
             print(input + "暂无片源")
         }
-        VOD.vod_play_from = "决天影4k";
+        VOD.vod_play_from = "太阳BOX4K☀";
         VOD.vod_play_url = d.map(function(it) {
             return it.title + "$" + it.url
         }).join("#");
