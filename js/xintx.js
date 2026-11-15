@@ -653,7 +653,7 @@ var rule = {
         'User-Agent': 'PC_UA'
     },
     timeout: 5000,
-    class_name: '决天影4K电视剧&决天影4K电影&决天影4K综艺&决天影4K纪录片&决天影4K动漫&决天影4K少儿&决天影4K短剧',
+    class_name: '太阳BOX4K电视剧&太阳BOX4K电影&太阳BOX4K综艺&太阳BOX4K纪录片&太阳BOX4K动漫&太阳BOX4K少儿&太阳BOX4K短剧',
     class_url: '100113&100173&100109&100105&100119&100150&110755',
     limit: 20,
     play_parse: true,
@@ -932,7 +932,7 @@ var rule = {
         });
 
         if (zp.length > 0) {
-            playFrom.push("决天影4k❤️");
+            playFrom.push("太阳BOX4K☀");
             playUrl.push(zp.map(it => it.title + "$" + it.url).join("#"));
         }
 
