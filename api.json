@@ -1,5 +1,5 @@
 {
-  "spider": "./taiyang.jar",
+  "spider": "./baipiap1117.jar",
   "wallpaper": "http://127.0.0.1:9978/proxy?do=wallpaper",
   "logo": "",
   "notice": "【免费仅限测试用，请勿演示贩卖购买！提示:\n📢接口软件永远免费\n📢长期维护切勿贩卖请勿单独使用】",
@@ -108,6 +108,24 @@
       "name": "片帝｜4k",
       "type": 3,
       "api": "https://13395.kstore.space/%E5%BD%B1%E8%A7%86%E4%BB%93/%5B4K%5D%E7%89%87%E5%B8%9D.py"
+    },
+    {
+      "key": "云播",
+      "name": "云播｜4k",
+      "type": 3,
+      "api": "csp_AppYB",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "未来",
+      "name": "未来｜4k",
+      "type": 3,
+      "api": "csp_AppWL",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0
     },
            {
             "key": "py_6v",
