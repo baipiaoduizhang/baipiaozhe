@@ -92,6 +92,18 @@
     "ext": "https://app.69mini.com/js/8js/哔哩.js"
     },
     {
+            "key": "看客TVAPP",
+            "name": "4K｜珂珂",
+            "type": 3,
+            "api": "https://13395.kstore.space/%E5%BD%B1%E8%A7%86%E4%BB%93/kanketv.min.js",
+            "ext": {
+                "username": "",
+                "password": "",
+                "markcode": "",
+                "CosUrl": "http://2025-1329689796.cos.ap-guangzhou.myqcloud.com/kanke/app1.json"
+            }
+        },
+    {
       "key": "[4K]移动4k (1)",
       "name": "移动｜4k",
       "type": 3,
@@ -108,6 +120,18 @@
       "name": "片帝｜4k",
       "type": 3,
       "api": "https://13395.kstore.space/%E5%BD%B1%E8%A7%86%E4%BB%93/%5B4K%5D%E7%89%87%E5%B8%9D.py"
+    },
+    {
+      "key": "影探聚py",
+      "name": "影探聚合黑大帅｜4k",
+      "type": 3,
+      "api": "./lib/影探聚合增加解析-黑大帅.py"
+    },
+   {
+      "key": "影聚py",
+      "name": "影果｜4k",
+      "type": 3,
+      "api": "./lib/影探+红果合并.py"
     },
     {
       "key": "云播",
